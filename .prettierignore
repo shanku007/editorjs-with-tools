@@ -1,0 +1,8 @@
+# Ignore artifacts:
+build
+server-build
+public
+coverage
+scripts
+config
+src/serviceWorker.js

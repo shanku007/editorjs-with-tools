@@ -1,0 +1,25 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+/server-build
+
+# docs
+/docs/**
+/jsdoc/**
+
+# config
+/scripts/**
+/config/**
+
+# static assets
+/public
+
+# bundled assets
+/dist/**
