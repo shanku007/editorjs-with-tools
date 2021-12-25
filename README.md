@@ -55,6 +55,8 @@ If you are publishing to public registry for the first time to npm you may need 
 
 `npm publish --access=public --registry https://registry.npmjs.org`
 
+For every other time you need to upgrade version number in package.json before publish. Also, update license in package.json, which is currently set as restrictive UNLICENSED, not an open-source friendly license.
+
 ## How to use your created package?
 
 If using yarn:
