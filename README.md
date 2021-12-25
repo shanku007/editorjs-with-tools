@@ -9,6 +9,7 @@
 - Editor of your preference. I used some VSCode specific config in .vscode folder and recommend plugins for enhanced experience.
 
 Recommended VSCode Extensions:
+
 - Prettier (Official) - Code formatter
 - ESLint (Official) - Real time JS syntax validation
 
@@ -21,6 +22,7 @@ Recommended VSCode Extensions:
 - Jest lint setup, jest can be added
 
 ## Steps to use this project
+
 - Update **name**, **license**, **publishConfig** and **repository** fields in package.json as per your need.
 - `yarn build` to prepare dist folder for publishing.
 - Before publishing with npm make sure you are publishing to correct registry, public/private depending on project's need.
@@ -71,7 +73,7 @@ E.g. to install and use this sample public package published to npm registry:
 
 `npm i --save @hackingbay/js-package-minimal-boilerplate`
 
-or 
+or
 
 `yarn add @hackingbay/js-package-minimal-boilerplate`
 
