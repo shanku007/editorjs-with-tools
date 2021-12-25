@@ -1,6 +1,6 @@
 # Javascript package boilerplate by HackingBay
 
-- Rollup + Babel + Prettier + Strict ESlint + Sass + VSCode - Enterprise grade boilerplate
+- Rollup + Babel + Prettier + Strict ESlint + VSCode - Enterprise grade boilerplate
 
 - Minimalist js package boilerplate with rollup.js bundler and dev environment setup. No Sass/React support. For react use other template.
 
