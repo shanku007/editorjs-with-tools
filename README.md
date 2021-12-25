@@ -17,7 +17,7 @@ Recommended VSCode Extensions:
 - Rollup.js
 - Yarn
 - Babel
-- Prettier + ESlint + Stylelint
+- Prettier + ESlint
 - Jest lint setup, jest can be added
 
 ## Steps to use this project
