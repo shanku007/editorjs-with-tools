@@ -24,6 +24,7 @@ Recommended VSCode Extensions:
 - Update **name**, **license**, **publishConfig** and **repository** fields in package.json as per your need.
 - `yarn build` to prepare dist folder for publishing.
 - Before publishing with npm make sure you are publishing to correct registry, public/private depending on project's need.
+- Change **private:true** to **private:false** in package.json to publish package to public registry.
 
 ## Available Scripts
 
@@ -49,3 +50,7 @@ If your account exists, login to the registry and do npm publish to our internal
 ### `npm publish --registry https://PACKAGE-REGISTRY-URL`
 
 This commands publishes your package to our internal npm package registry.
+
+If you are publishing to public registry for the first time to npm you may need to provide `--access=public` as argument. E.g.
+
+`npm publish --access=public --registry https://registry.npmjs.org`
