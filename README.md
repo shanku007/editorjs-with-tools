@@ -22,12 +22,16 @@ Recommended VSCode Extensions:
 
 ## Steps to use this project
 - Update **name**, **license**, **publishConfig** and **repository** fields in package.json as per your need.
-- yarn build to prepare dist folder for publishing.
+- `yarn build` to prepare dist folder for publishing.
 - Before publishing with npm make sure you are publishing to correct registry, public/private depending on project's need.
 
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `yarn build`
+
+To build the project
 
 ### `yarn fix:all`
 
