@@ -54,3 +54,25 @@ This commands publishes your package to our internal npm package registry.
 If you are publishing to public registry for the first time to npm you may need to provide `--access=public` as argument. E.g.
 
 `npm publish --access=public --registry https://registry.npmjs.org`
+
+## How to use your created package?
+
+If using yarn:
+
+`yarn add @your-org-scope/your-package-name --registry https://PACKAGE-REGISTRY-URL`
+
+If using npm:
+
+`npm install @your-org-scope/your-package-name --save --registry https://PACKAGE-REGISTRY-URL`
+
+E.g. to install and use this sample public package published to npm registry:
+
+`npm i --save @hackingbay/js-package-minimal-boilerplate`
+
+or 
+
+`yarn add @hackingbay/js-package-minimal-boilerplate`
+
+Use in your application just like any other imported package.
+
+`import { sum } from '@hackingbay/js-package-minimal-boilerplate'`
