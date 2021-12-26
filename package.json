@@ -22,9 +22,10 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production rollup -c",
     "build-watch": "cross-env NODE_ENV=development rollup -c -w",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "lint": "npx eslint .",
     "lint:fix": "npx eslint . --fix",
-    "fix:all": "npx prettier --write . && npm rum lint:fix"
+    "fix:all": "npm run format && npm rum lint:fix"
   },
   "browserslist": {
     "production": [
