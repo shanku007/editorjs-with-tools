@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/shanku007/editorjs-with-tools"
   },
   "scripts": {
     "build": "cross-env NODE_ENV=production rollup -c",
