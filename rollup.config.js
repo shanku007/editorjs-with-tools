@@ -11,6 +11,11 @@ export default {
   output: [
     { file: pkg.main, format: 'cjs' },
     {
+      name: "Clipuff",
+      file: pkg.browser,
+      format: 'umd',
+    },
+    {
       file: pkg.unpkg,
       format: 'cjs',
       plugins: [

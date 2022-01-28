@@ -1,23 +1,23 @@
 {
-  "name": "@hackingbay/js-package-minimal-boilerplate",
+  "name": "@clipuff/editor",
   "version": "0.1.3",
   "private": true,
   "license": "UNLICENSED",
   "main": "dist/index.cjs.js",
   "unpkg": "dist/index.min.js",
   "module": "dist/index.esm.js",
+  "browser": "dist/index.umd.min.js",
   "source": "src/index.js",
   "author": {
-    "name": "Nitin Jaiswal",
-    "email": "happyesthete@gmail.com",
-    "url": "https://nitinjaiswal.com"
+    "name": "Shankar Jha",
+    "email": "the.shankar.jha@gmail.com"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/hackingbay/js-package-minimal-boilerplate.git"
+    "url": ""
   },
   "scripts": {
     "build": "cross-env NODE_ENV=production rollup -c",
