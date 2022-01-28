@@ -28,4 +28,3 @@ build/sitemap*.xml
 public/sitemap*.xml
 
 # bundled assets
-dist
