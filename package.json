@@ -60,5 +60,25 @@
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-terser": "^7.0.2"
+  },
+  "dependencies": {
+    "@editorjs/checklist": "^1.3.0",
+    "@editorjs/delimiter": "^1.2.0",
+    "@editorjs/inline-code": "^1.3.1",
+    "@editorjs/marker": "^1.2.2",
+    "@editorjs/warning": "^1.2.0",
+    "editorjs-drag-drop": "^1.0.3",
+    "editorjs-table": "^1.4.10",
+    "editorjs-tooltip": "^1.1.3",
+    "editorjs-undo": "^2.0.0-rc.0",
+    "@bomdi/codebox": "^1.0.12",
+    "@editorjs/editorjs": "^2.22.2",
+    "@editorjs/embed": "^2.5.0",
+    "@editorjs/header": "^2.6.2",
+    "@editorjs/nested-list": "^1.0.2",
+    "@editorjs/paragraph": "^2.8.0",
+    "@editorjs/underline": "^1.0.0",
+    "editorjs-alert": "^1.0.3",
+    "image-with-timestamp": "git+https://github.com/shanku007/simple-image-with-timestamp.git"
   }
 }

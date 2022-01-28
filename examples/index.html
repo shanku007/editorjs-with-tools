@@ -1,14 +1,79 @@
-
 <html>
   <head>
     <script src="../dist/index.umd.min.js"></script>
+    <style>
+      .cdx-block {
+        margin: 1rem auto;
+      }
+    </style>
   </head>
 
   <body>
+    <button onclick="addImage()">Add Image</button>
     <div id="editorjs"></div>
 
     <script>
-      console.log(Clipuff.sum(2,4))
+       const data = {
+        time: 1643394688358,
+        blocks: [
+          {
+            id: "y_tEJLgD2N",
+            type: "header",
+            data: {
+              text: "Editor.js",
+              level: 1,
+            },
+          },
+          {
+            id: "ryiIamqBao",
+            type: "paragraph",
+            data: {
+              text: "Hey. Meet the new Editor. On this page you can see it in action — try to edit this text.",
+            },
+          },
+        ],
+        version: "2.13.0",
+      };
+      let editor;
+      function onChange(api, event) {
+        console.log(api);
+      }
+
+      function onReady() {
+        const undo = new Clipuff.Undo({editor})
+        undo.initialize(data)
+        new Clipuff.DragDrop(editor);
+      }
+      function onPlayClick(timestamp) {
+        console.log("play", timestamp);
+      }
+      const config = {
+        onChange,
+        onReady,
+      };
+     
+
+      editor = new Clipuff.Editor("editorjs", data, onPlayClick, {}, config);
+      editor = editor.init();
+      function addImage() {
+        const blockToAdd = {
+          type: "image",
+          data: {
+            url: "https://ui-avatars.com/api/?name=John+Doe",
+            timeStamp: "21s",
+          },
+        };
+        let { type, data } = blockToAdd;
+        let currentBlockIndex = editor.blocks.getCurrentBlockIndex();
+        let nextBlockIndex =
+          currentBlockIndex >= 0
+            ? editor.blocks.getBlockByIndex(currentBlockIndex).isEmpty
+              ? currentBlockIndex
+              : currentBlockIndex + 1
+            : 0;
+        editor.blocks.insert(type, { ...data }, {}, nextBlockIndex, true);
+        editor.caret.setToBlock(nextBlockIndex + 1);
+      }
     </script>
   </body>
 </html>
