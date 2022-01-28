@@ -1,13 +1,42 @@
-const style = document.createElement('style');
-style.innerHTML = `
-.ce-toolbar__actions {
-  position: absolute;
-  left: -3rem;
-  top: 0.6rem;
-  right:100rem;
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
 }
-`;
-document.head.appendChild(style);
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  Object.defineProperty(Constructor, "prototype", {
+    writable: false
+  });
+  return Constructor;
+}
 
 function getDefaultExportFromCjs (x) {
 	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
@@ -142,9 +171,14 @@ var bundle$4 = {exports: {}};
 
 var Underline = /*@__PURE__*/getDefaultExportFromCjs(bundle$4.exports);
 
-const getToolConfig = (data, el, onPlayClick, tools, otherConfig) => {
+function ownKeys$1(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread$1(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$1(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$1(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+var getToolConfig = function getToolConfig(data, el, onPlayClick, tools, otherConfig) {
   console.log('getToolConfig', data, el, onPlayClick, tools, otherConfig);
-  const config = {
+
+  var config = _objectSpread$1({
     time: new Date().getTime(),
 
     /**
@@ -158,12 +192,12 @@ const getToolConfig = (data, el, onPlayClick, tools, otherConfig) => {
      * Available Tools list.
      * Pass Tool's class or Settings object for each Tool you want to use
      */
-    tools: { ...tools,
+    tools: _objectSpread$1(_objectSpread$1({}, tools), {}, {
       image: {
         class: SimpleImage,
         shortcut: 'CMD+SHIFT+I',
         config: {
-          onPlayClick
+          onPlayClick: onPlayClick
         }
       },
       header: {
@@ -243,9 +277,9 @@ const getToolConfig = (data, el, onPlayClick, tools, otherConfig) => {
         shortcut: 'CMD+SHIFT+C'
       } // ...
 
-    },
-    ...otherConfig
-  };
+    })
+  }, otherConfig);
+
   return config;
 };
 
@@ -265,19 +299,28 @@ var bundle$1 = {exports: {}};
 
 var bundle = bundle$1.exports;
 
-class Editor {
-  constructor(el, data, onPlayClick, tools, otherConfig) {
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+var Editor = /*#__PURE__*/function () {
+  function Editor(el, data, onPlayClick, tools, otherConfig) {
+    _classCallCheck(this, Editor);
+
     this.config = getToolConfig(data, el, onPlayClick, tools, otherConfig);
     this.editor = null;
     console.log('Editor constructor', this.config);
   }
 
-  init() {
-    this.editor = new EditorJS({ ...this.config
-    });
-    return this.editor;
-  }
+  _createClass(Editor, [{
+    key: "init",
+    value: function init() {
+      this.editor = new EditorJS(_objectSpread({}, this.config));
+      return this.editor;
+    }
+  }]);
 
-}
+  return Editor;
+}();
 
 export { bundle$2 as DragDrop, Editor, bundle as Undo, Editor as default };

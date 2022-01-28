@@ -1,4 +1,3 @@
-import './styles';
 import EditorJS from '@editorjs/editorjs';
 import getToolConfig from './tools';
 import DragDrop from 'editorjs-drag-drop';
