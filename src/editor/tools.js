@@ -1,5 +1,5 @@
 import Header from '@editorjs/header';
-import SimpleImage from 'image-with-timestamp';
+import TimeStampImage from '../plugins/TimeStampImage';
 import Warning from '@editorjs/warning';
 import Alert from 'editorjs-alert';
 import NestedList from '@editorjs/nested-list';
@@ -11,8 +11,18 @@ import Marker from '@editorjs/marker';
 import InlineTool from '@editorjs/inline-code';
 import Tooltip from 'editorjs-tooltip';
 import Underline from '@editorjs/underline';
+import VideoPlayer from '../plugins/video';
+import RecordPlaceHolder from '../plugins/record-placeholder';
 
-const getToolConfig = (data, el, onPlayClick, tools, otherConfig) => {
+const getToolConfig = (
+  data,
+  el,
+  onPlayClick,
+  fileUploader,
+  onRecordClick,
+  tools,
+  otherConfig,
+) => {
   console.log('getToolConfig', data, el, onPlayClick, tools, otherConfig);
   const config = {
     time: new Date().getTime(),
@@ -32,10 +42,11 @@ const getToolConfig = (data, el, onPlayClick, tools, otherConfig) => {
     tools: {
       ...tools,
       image: {
-        class: SimpleImage,
+        class: TimeStampImage,
         shortcut: 'CMD+SHIFT+I',
         config: {
           onPlayClick,
+          fileUploader,
         },
       },
       header: {
@@ -112,7 +123,19 @@ const getToolConfig = (data, el, onPlayClick, tools, otherConfig) => {
       },
       inlineCode: {
         class: InlineTool,
-        shortcut: 'CMD+SHIFT+C'
+        shortcut: 'CMD+SHIFT+C',
+      },
+      video: {
+        class: VideoPlayer,
+        config: {
+          fileUploader,
+        },
+      },
+      recordPlaceHolder: {
+        class: RecordPlaceHolder,
+        config: {
+          onRecordClick,
+        },
       },
 
       // ...

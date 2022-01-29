@@ -2,22 +2,40 @@ import babel from '@rollup/plugin-babel';
 import external from 'rollup-plugin-peer-deps-external';
 import del from 'rollup-plugin-delete';
 import commonjs from '@rollup/plugin-commonjs';
-import nodeResolve from '@rollup/plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
+import scss from 'rollup-plugin-scss';
 import pkg from './package.json';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+
+const { NODE_ENV = 'development' } = process.env;
+const isProduction = NODE_ENV === 'production';
 
 export default {
-  input: pkg.source,
+  input: 'src/index.js',
+  plugins: [
+    external(),
+    babel({
+      exclude: 'node_modules/**',
+      babelHelpers: 'runtime',
+    }),
+    nodeResolve(),
+    del({ targets: ['dist/*'] }),
+    commonjs(),
+    scss({
+      output: 'dist/index.min.css',
+      outputStyle: 'compressed',
+    }),
+  ],
   output: [
-    { file: pkg.main, format: 'cjs' },
     {
-      name: "Clipuff",
+      name: 'Clipuff',
       file: pkg.browser,
       format: 'umd',
+      sourcemap: isProduction ? false : true,
     },
     {
-      file: pkg.unpkg,
-      format: 'cjs',
+      file: pkg.module,
+      format: 'es',
       plugins: [
         terser({
           // To preserve licensing via comments
@@ -34,18 +52,7 @@ export default {
           },
         }),
       ],
+      sourcemap: isProduction ? false : true,
     },
-    { file: pkg.module, format: 'esm' },
   ],
-  plugins: [
-    external(),
-    babel({
-      exclude: 'node_modules/**',
-      babelHelpers: 'runtime',
-    }),
-    nodeResolve(),
-    del({ targets: ['dist/*'] }),
-    commonjs(),
-  ],
-  external: Object.keys(pkg.peerDependencies || {}),
 };

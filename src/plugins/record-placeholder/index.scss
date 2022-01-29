@@ -1,0 +1,16 @@
+.cdx-record-placeholder {
+  display: flex;
+  flex-direction: row;
+
+}
+
+.cdx-record-placeholder__button{
+  border: 1px solid;
+  background-color: #ffff;
+  border-radius: 64%;
+  margin-right: 1rem;
+}
+
+.cdx-record-placeholder__label{
+  line-height: 1.7rem;
+}

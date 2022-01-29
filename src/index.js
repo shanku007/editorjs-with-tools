@@ -1,13 +1,22 @@
 import EditorJS from '@editorjs/editorjs';
-import getToolConfig from './tools';
+import getToolConfig from './editor/tools';
 import DragDrop from 'editorjs-drag-drop';
 import Undo from 'editorjs-undo';
+import './index.scss';
 
 class Editor {
-  constructor(el, data, onPlayClick, tools, otherConfig) {
-    this.config = getToolConfig(data, el, onPlayClick, tools, otherConfig);
+  constructor(data, el, onPlayClick, fileUploader, onRecordClick, tools, otherConfig) {
+    this.config = getToolConfig(
+      data,
+      el,
+      onPlayClick,
+      fileUploader,
+      onRecordClick,
+      tools,
+      otherConfig,
+    );
+    console.log(this.config);
     this.editor = null;
-    console.log('Editor constructor', this.config);
   }
 
   init() {
@@ -17,5 +26,5 @@ class Editor {
     return this.editor;
   }
 }
-export { Editor, DragDrop, Undo };
+export { Editor, DragDrop, Undo, getToolConfig };
 export default Editor;

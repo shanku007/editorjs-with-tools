@@ -1,11 +1,7 @@
 <html>
   <head>
     <script src="../dist/index.umd.min.js"></script>
-    <style>
-      .cdx-block {
-        margin: 1rem auto;
-      }
-    </style>
+    <link rel="stylesheet" href="../dist/index.min.css" />
   </head>
 
   <body>
@@ -13,7 +9,7 @@
     <div id="editorjs"></div>
 
     <script>
-       const data = {
+      const data = {
         time: 1643394688358,
         blocks: [
           {
@@ -39,10 +35,18 @@
         console.log(api);
       }
 
+      function onRecordClick(blockIndex) {
+        console.log(blockIndex);
+      }
       function onReady() {
-        const undo = new Clipuff.Undo({editor})
-        undo.initialize(data)
+        const undo = new Clipuff.Undo({ editor });
+        undo.initialize(data);
         new Clipuff.DragDrop(editor);
+      }
+
+      function fileUploader(file) {
+        console.log(file);
+        return "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.XH_U0aNDsg9l9smbVtiA9gHaFV%26pid%3DApi&f=1";
       }
       function onPlayClick(timestamp) {
         console.log("play", timestamp);
@@ -51,9 +55,16 @@
         onChange,
         onReady,
       };
-     
 
-      editor = new Clipuff.Editor("editorjs", data, onPlayClick, {}, config);
+      editor = new Clipuff.Editor(
+        data,
+        "editorjs",
+        onPlayClick,
+        fileUploader,
+        onRecordClick,
+        {},
+        config,
+      );
       editor = editor.init();
       function addImage() {
         const blockToAdd = {
