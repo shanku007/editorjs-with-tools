@@ -23,7 +23,6 @@ const getToolConfig = (
   tools,
   otherConfig,
 ) => {
-  console.log('getToolConfig', data, el, onPlayClick, tools, otherConfig);
   const config = {
     time: new Date().getTime(),
     /**
