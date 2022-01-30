@@ -74,6 +74,7 @@ class VideoPlayer {
      */
     this.data = {
       url: data.url || '',
+      key: data.key || false,
       caption: data.caption || '',
       autoplay: data.autoplay !== undefined ? data.autoplay : false,
       controls: data.controls !== undefined ? data.controls : true,
@@ -174,6 +175,7 @@ class VideoPlayer {
 
     return Object.assign(this.data, {
       url: video.src,
+      key: this.data.key,
       caption: caption.innerHTML,
       controls: video.controls,
       autoplay: video.autoplay,

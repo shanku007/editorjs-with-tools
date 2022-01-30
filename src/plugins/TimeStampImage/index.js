@@ -86,6 +86,7 @@ class TimeStampImage {
      */
     this.data = {
       url: data.url || '',
+      key: data.key || false,
       caption: data.caption || '',
       timeStamp: data.timeStamp || null,
       site_url: data.site_url || '',
@@ -131,6 +132,7 @@ class TimeStampImage {
 
     return Object.assign(this.data, {
       url: image.src,
+      key: this.data.key,
       caption: caption.innerHTML,
       timeStamp: this.data.timeStamp,
       site_url: this.data.site_url,
@@ -266,7 +268,6 @@ class TimeStampImage {
         this.onDropHandler(file).then(data => {
           this.data = data;
         });
-
 
         buttonWrap.remove();
         buttonWrap = null;
@@ -407,14 +408,6 @@ class TimeStampImage {
       wrapper.appendChild(el);
     });
     return wrapper;
-  }
-
-  removed() {
-    // this.config.onRemove(this.data.url)
-    console.log(this.data.url)
-    if (this.data.url && this.data.url.startsWith('blob:')) {
-      URL.revokeObjectURL(this.data.url);
-    }
   }
 
   /**
