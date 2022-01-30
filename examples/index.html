@@ -46,7 +46,9 @@
 
       function fileUploader(file) {
         console.log(file);
-        return "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.XH_U0aNDsg9l9smbVtiA9gHaFV%26pid%3DApi&f=1";
+        const url = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.XH_U0aNDsg9l9smbVtiA9gHaFV%26pid%3DApi&f=1";
+        const key = "image";
+        return {url,key}
       }
       function onPlayClick(timestamp) {
         console.log("play", timestamp);

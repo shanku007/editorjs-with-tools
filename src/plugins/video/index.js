@@ -208,9 +208,10 @@ class VideoPlayer {
    */
   onDropHandler(file) {
     return new Promise(async (resolve, reject) => {
-      const url = await this.config.fileUploader(file);
+      const { url, key } = await this.config.fileUploader(file);
       resolve({
         url: url,
+        key: key,
         caption: file.name,
       });
     });
