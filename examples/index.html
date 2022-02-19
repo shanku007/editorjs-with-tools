@@ -32,7 +32,9 @@
       };
       let editor;
       function onChange(api, event) {
-        console.log(api);
+        editor.save().then(outputData => {
+          console.log(outputData);
+        });
       }
 
       function onRecordClick(blockIndex) {
@@ -45,10 +47,11 @@
       }
 
       function fileUploader(file) {
-        console.log(file);
-        const url = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.XH_U0aNDsg9l9smbVtiA9gHaFV%26pid%3DApi&f=1";
+        const url = "https://ui-avatars.com/api/?name=John+Doe";
         const key = "image";
-        return {url,key}
+        return new Promise(resolve => {
+          setTimeout(() => resolve({ url, key }), 4000);
+        });
       }
       function onPlayClick(timestamp) {
         console.log("play", timestamp);
@@ -68,6 +71,17 @@
         config,
       );
       editor = editor.init();
+
+      function updateEditorData(blockIndex, id) {
+        console.log("Next Block Index", blockIndex);
+        setTimeout(() => {
+          console.log("Editor", editor);
+          const block = editor.blocks.getBlockByIndex(blockIndex);
+          editor.blocks.update(block.id, {
+            url: "https://ui-avatars.com/api/?name=Shankar+DJhaoe",
+          });
+        }, 3000);
+      }
       function addImage() {
         const blockToAdd = {
           type: "image",
@@ -84,7 +98,11 @@
               ? currentBlockIndex
               : currentBlockIndex + 1
             : 0;
+        const id = "y_tEJLgDnkjcnkjhn";
         editor.blocks.insert(type, { ...data }, {}, nextBlockIndex, true);
+        console.log("Current Block Index", currentBlockIndex);
+        console.log("Next Block Index", nextBlockIndex);
+        updateEditorData(nextBlockIndex, id);
         editor.caret.setToBlock(nextBlockIndex + 1);
       }
     </script>

@@ -264,6 +264,7 @@ class TimeStampImage {
       buttonWrap.appendChild(label);
       buttonWrap.appendChild(loadButton);
       loadButton.onchange = e => {
+        wrapper.appendChild(loader);
         const file = e.target.files[0];
         this.onDropHandler(file).then(data => {
           this.data = data;
@@ -299,7 +300,8 @@ class TimeStampImage {
    */
   onDropHandler(file) {
     return new Promise(async (resolve, reject) => {
-      const {url,key} = await this.config.fileUploader(file);
+      const { url, key } = await this.config.fileUploader(file);
+      console.log(url);
       resolve({
         url: url,
         key: key,
@@ -334,7 +336,9 @@ class TimeStampImage {
 
       case 'file':
         const { file } = event.detail;
-
+        let wrapper = this.nodes.wrapper,
+          loader = this.nodes.loader;
+        wrapper.appendChild(loader);
         this.onDropHandler(file).then(data => {
           this.data = data;
         });
